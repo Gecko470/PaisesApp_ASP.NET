@@ -1,0 +1,87 @@
+﻿@page
+@model PaisesApp.Pages.VerPaisModel
+@{
+    ViewData["Title"] = "Ver Pais";
+}
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-4 col-sm-3 bg-dark text-light" id="sideBar">
+            <h1 class="text-light m-auto pt-3"><strong>Paises App</strong></h1>
+            <hr>
+            <a asp-page="/Index" class="btn btn-outline-light">Por Pais</a>
+            <hr />
+            <a asp-page="/Region" asp-route-termino="" class="btn btn-outline-light">Por Región</a>
+            <hr />
+            <a asp-page="/Capital" class="btn btn-outline-light">Por capital</a>
+            <hr />
+        </div>
+
+        <div class="col-8 col-sm-9">
+
+            <div class="row mt-5">
+                <h1>Pais : @Model.pais[0].name</h1>
+                <hr />
+            </div>
+
+            <div class="row">
+                <div class="col-4 col-sm-4">
+                    <h2>Bandera</h2>
+                    <img src="@Model.pais[0].flag" class="img-fluid img-thumbnail" alt="Bandera" />
+                </div>
+                <div class="col-8 col-sm-8">
+                    <h3>Información</h3>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <strong>Población:</strong>   @Model.pais[0].population hab.
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Capital:</strong>   @Model.pais[0].capital
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Area:</strong>   @Model.pais[0].area  Km2.
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Región:</strong>   @Model.pais[0].region
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Fronteras:</strong>  @foreach (var item in Model.pais[0].borders)
+                            {
+                                <span>@item</span>
+                            }
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Idiomas:</strong>   @Model.pais[0].languages[0].name
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <h3>Traducciones:</h3>
+                    <span class="badge bg-dark mr-1">@Model.pais[0].translations.es</span>
+                    <span class="badge bg-dark mr-1">@Model.pais[0].translations.de</span>
+                    <span class="badge bg-dark mr-1">@Model.pais[0].translations.fr</span>
+                    <span class="badge bg-dark mr-1">@Model.pais[0].translations.it</span>
+                    <span class="badge bg-dark mr-1">@Model.pais[0].translations.pt</span>
+                    <span class="badge bg-dark mr-1">@Model.pais[0].translations.nl</span>
+                    <span class="badge bg-dark mr-1">@Model.pais[0].translations.br</span>
+                    <span class="badge bg-dark mr-1">@Model.pais[0].translations.hr</span>
+                    <span class="badge bg-dark mr-1">@Model.pais[0].translations.ja</span>
+                    <span class="badge bg-dark mr-1">@Model.pais[0].translations.fa</span>
+                    <br />
+                    <br />
+                    <hr />
+                    <h3>Respuesta API RestCountries formato JSON:</h3>
+                    <pre>
+                        @ViewData["respuesta"]
+                    </pre>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

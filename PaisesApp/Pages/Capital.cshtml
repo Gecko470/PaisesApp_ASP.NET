@@ -1,0 +1,50 @@
+﻿@page
+@model PaisesApp.Pages.CapitalModel
+@{
+    ViewData["Title"] = "Por Capital";
+}
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-4 col-sm-3 bg-dark text-light" id="sideBar">
+            <h1 class="text-light m-auto pt-3"><strong>Paises App</strong></h1>
+            <hr>
+            <a asp-page="/Index" class="btn btn-outline-light">Por Pais</a>
+            <hr />
+            <a asp-page="/Region" asp-route-termino="" class="btn btn-outline-light">Por Región</a>
+            <hr />
+            <a asp-page="/Capital" class="btn btn-outline-light">Por capital</a>
+            <hr />
+        </div>
+
+        <div class="col-8 col-sm-9">
+
+            <div class="row">
+                <div class="col-12 col-sm-12 mt-3">
+                    <h2>Búsqueda por Capital</h2>
+                    <hr />
+                </div>
+                <form method="post">
+                    <div class="form-group">
+                        <input asp-for="termino" placeholder="Introduce ..." class="col-12 col-sm-12 mt-3">
+                        <input type="submit" class="btn btn-secondary col-12 col-sm-12 mt-3" value="Buscar">
+                    </div>
+                </form>
+
+            </div>
+            @if (Model.res == 1)
+            {
+                <partial name="Shared/_tabla.cshtml" />
+            }
+            else if (Model.res == 0)
+            {
+                <div class='alert alert-danger col-auto mt-5'><h4>No se han encontrado resultados con ese término..</h4></div>
+            }
+            else if (Model.res == -1)
+            {
+                <div class='alert alert-danger col-auto mt-5'><h4>Debe introducir un término para buscar..</h4></div>
+            }
+        </div>
+    </div>
+</div>

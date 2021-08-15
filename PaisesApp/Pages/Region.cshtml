@@ -1,0 +1,56 @@
+﻿@page
+@model PaisesApp.Pages.RegionModel
+@{
+    ViewData["Title"] = "Por Region";
+}
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-4 col-sm-3 bg-dark text-light" id="sideBar">
+            <h1 class="text-light m-auto pt-3"><strong>Paises App</strong></h1>
+            <hr>
+            <a asp-page="/Index" class="btn btn-outline-light">Por Pais</a>
+            <hr />
+            <a asp-page="/Region" asp-route-termino="" class="btn btn-outline-light">Por Región</a>
+            <hr />
+            <a asp-page="/Capital" class="btn btn-outline-light">Por capital</a>
+            <hr />
+        </div>
+
+        <div class="col-8 col-sm-9">
+
+            <div class="row">
+
+                <div class="col-12 col-sm-12 mt-3">
+
+                    <div class="col-12 col-sm-12 mt-3">
+                        <h2>Búsqueda por Región</h2>
+                        <hr />
+                    </div>
+                    <a asp-route-termino="africa" class="btn btn-outline-dark col-auto mr-5">Africa</a>
+                    <a asp-route-termino="asia" class="btn btn-outline-dark col-auto mr-5">Asia</a>
+                    <a asp-route-termino="americas" class="btn btn-outline-dark col-auto mr-5">América</a>
+                    <a asp-route-termino="europe" class="btn btn-outline-dark col-auto mr-5">Europa</a>
+                    <a asp-route-termino="oceania" class="btn btn-outline-dark col-auto mr-5">Oceanía</a>
+
+                </div>
+
+
+            </div>
+
+            @if (Model.res == 1)
+            {
+                <partial name="Shared/_tabla.cshtml" />
+            }
+            else if (Model.res == 0)
+            {
+                <div class='alert alert-danger col-auto mt-5'><h4>No se han encontrado resultados con ese término..</h4></div>
+            }
+            else if (Model.res == -1)
+            {
+                <div class='alert alert-danger col-auto mt-5'><h4>Debe introducir un término para buscar..</h4></div>
+            }
+        </div>
+    </div>
+</div>

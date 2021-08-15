@@ -1,0 +1,30 @@
+﻿
+<div class="animate__animated animate__fadeIn animate__faster">
+    <div class="row mt-5">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th> # </th>
+                        <th> Bandera </th>
+                        <th> Nombre </th>
+                        <th> Población </th>
+                        <th>  </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.paises.Length; i++)
+                    {
+                        <tr>
+                            <td> @(i+1) </td>
+                            <td><img class="img-fluid" style="max-width: 60px;" src="@Model.paises[i].flag" /></td>
+                            <td>@Model.paises[i].name, @Model.paises[i].capital</td>
+                            <td>@Model.paises[i].population</td>
+                            <td><a asp-page="/VerPais" asp-route-termino="@Model.paises[i].name">Ver..</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
